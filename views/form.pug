@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  a.vew-messages-link(href='/') Vew messages
+  form.message-form(method='POST' action='/new')
+    input#author-name(
+      type='text'
+      name='messageUser'
+      placeholder='Your name'
+    )
+    input#message(
+      type='text'
+      name='messageText'
+      placeholder='Message'
+    )
+    input#submit-btn(
+      type='submit'
+      name='submit-btn'
+      value='Send message'
+    )
+
