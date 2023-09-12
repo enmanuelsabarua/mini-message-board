@@ -1,3 +1,4 @@
+const moment = require('moment');
 const express = require('express');
 const router = express.Router();
 const { messages } = require('./index');
@@ -11,7 +12,7 @@ router.post('/', function(req, res, next) {
   const messageText = req.body.messageText;
   const messageUser = req.body.messageUser;
   
-  messages.push({text: messageText, user: messageUser, added: new Date()});
+  messages.push({text: messageText, user: messageUser, added: moment().format('MMMM Do YYYY, h:mm:ss a')});
   res.redirect('/');
 });
 
