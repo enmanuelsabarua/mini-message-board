@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  a.vew-messages-link(href='/') Vew messages
+  a.navigate-link(href='/') Vew messages
   form.message-form(method='POST' action='/new')
     input#author-name(
       type='text'
