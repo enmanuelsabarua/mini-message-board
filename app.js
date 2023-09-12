@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+require('dotenv').config();
 
 const { router: indexRouter } = require('./routes/index');
 const usersRouter = require('./routes/new');
@@ -12,7 +13,7 @@ const app = express();
 // Set up mongoose
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-const mongoDB = 'mongodb+srv://enmanuelsancheza:3yioP6MZhafQFZAo@cluster0.ju4fw2u.mongodb.net/mini-message-board?retryWrites=true&w=majority';
+const mongoDB = process.env.MONGODB_URL;
 
 main().catch((err) => console.log(err))
 async function main() {
