@@ -1,22 +1,17 @@
-const moment = require('moment');
+const messagesModel = require('../models/message');
 const express = require('express');
 const router = express.Router();
 
-const messages = [
-  // {
-  //   text: "Hi there!",
-  //   user: "Amando",
-  //   added: moment().format('MMMM Do YYYY, h:mm:ss a')
-  // },
-  // {
-  //   text: "Hello World!",
-  //   user: "Charles",
-  //   added: moment().format('MMMM Do YYYY, h:mm:ss a')
-  // }
-];
+let messages = [];
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
+  try {
+    const newMessages = await messagesModel.find({});
+    messages = newMessages;
+  } catch (err) {
+    console.log(err);
+  }
   res.render('index', { title: 'Mini Message Board', messages: messages });
 });
 
